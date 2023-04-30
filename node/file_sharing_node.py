@@ -33,12 +33,11 @@ def print_help():
     print("help - Prints this help text.")
 
 
-def connect_to_node(node:FileSharingNode):
+def connect_to_node(node: FileSharingNode):
     host = input("host or ip of node? ")
     port = int(input("port? "))
     node.connect_with_node(host, port)
 
-print("Meow")
 node.connect_with_node(supernode['ip'], supernode['port'])
 for n in node.all_nodes:
     if n.host == supernode['ip'] and n.port == supernode['port']:

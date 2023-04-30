@@ -19,6 +19,9 @@ node.start()
 def print_help():
     print("stop - Stops the application.")
     print("help - Prints this help text.")
+    print("connect - Connect to a node")
+    print("broadcast - Send message to all connected nodes")
+    print("status - Displays the number of connected nodes and their details")
 
 
 def connect_to_node(node: FileSharingNode):
@@ -32,6 +35,7 @@ def broadcast(node: FileSharingNode):
 
 # Implement a console application
 command = input("? ")
+print_help()
 while command != "stop":
     if command == "help":
         print_help()
