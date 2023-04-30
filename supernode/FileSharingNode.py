@@ -19,11 +19,6 @@ class FileSharingNode (Node):
 
     def node_message(self, connected_node, data):
         print("node_message from " + connected_node.id + ": " + str(data))
-        if self.message_callback is not None:
-            self.message_callback("node_message", connected_node, data)
-
-    def on_node_message(self, callback):
-        self.message_callback = callback
 
     def node_disconnect_with_outbound_node(self, connected_node):
         print("node wants to disconnect with oher outbound node: " + connected_node.id)
