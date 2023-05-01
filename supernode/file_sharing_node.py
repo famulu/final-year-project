@@ -30,7 +30,7 @@ def connect_to_node(node: FileSharingNode):
     node.connect_with_node(host, port)
 
 def broadcast(node: FileSharingNode):
-    node.send_to_nodes('Hello, World')
+    node.send_to_nodes('information')
 
 
 # Implement a console application

@@ -18,7 +18,7 @@ if len(sys.argv) > 1:
 
 def message_callback(event, connected_node, data):
     if event == 'node_message' and connected_node.host == supernode['ip']:
-        if data == 'information': 
+        if data == 'information':
             information = subprocess.check_output(['ps','-eo', '%cpu,pid', '--sort', '-%cpu'])
             node.send_to_node(connected_supernode, information)
     else:
@@ -38,17 +38,16 @@ def print_help():
     print("stop - Stops the application.")
     print("help - Prints this help text.")
 
-
+connected_supernode = None
 def connect_to_node(node: FileSharingNode):
     host = input("host or ip of node? ")
     port = int(input("port? "))
     node.connect_with_node(host, port)
-
-node.connect_with_node(supernode['ip'], supernode['port'])
-for n in node.all_nodes:
-    if n.host == supernode['ip'] and n.port == supernode['port']:
-        connected_supernode = n
-        break
+    for n in node.all_nodes:
+        if n.host == supernode['ip'] and n.port == supernode['port']:
+            global connected_supernode
+            connected_supernode = n
+            break
 
 # Implement a console application
 command = input("? ")
