@@ -3,7 +3,7 @@ import sys
 from FileSharingNode import FileSharingNode
 
 # The port to listen for incoming node connections
-port = 9876 # default
+port = 9875 # default
 
 supernode = {
     'ip': '34.125.89.16',
