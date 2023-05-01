@@ -3,7 +3,7 @@ import sys
 from FileSharingNode import FileSharingNode
 
 # The port to listen for incoming node connections
-port = 9870 # default
+port = 9871 # default
 
 # Syntax file_sharing_node.py port
 if len(sys.argv) > 1:

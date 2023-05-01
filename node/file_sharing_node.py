@@ -5,11 +5,11 @@ from FileSharingNode import FileSharingNode
 
 
 # The port to listen for incoming node connections
-port = 9875 # default
+port = 9876 # default
 
 supernode = {
     'ip': '34.125.89.16',
-    'port': 9870
+    'port': 9871
 }
 
 # Syntax file_sharing_node.py port
