@@ -1,6 +1,8 @@
-import sys
+import sys, subprocess
 
 from FileSharingNode import FileSharingNode
+
+
 
 # The port to listen for incoming node connections
 port = 9875 # default
@@ -16,6 +18,10 @@ if len(sys.argv) > 1:
 
 def message_callback(event, connected_node, data):
     if event == 'node_message' and connected_node.host == supernode['ip']:
+        if data == 'information': 
+            information = subprocess.check_output(['ps','-eo', '%cpu,pid', '--sort', '-%cpu'])
+            node.send_to_node(connected_supernode, information)
+    else:
         print(data)
         node.send_to_node(connected_supernode, "Hi, I'm Alive!")
 
