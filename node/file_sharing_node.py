@@ -45,7 +45,9 @@ for n in node.all_nodes:
         break
 
 # Implement a console application
-command = input("? ")
+#todo: Check CPU; check health; request database
+
+command = input("Enter command: ")
 while command != "stop":
     if command == "help":
         print_help()
