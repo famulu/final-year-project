@@ -37,10 +37,8 @@ class MyNode (Node):
                     if row.split()[0] != '0.0' or row.split()[1] != '0.0':
                         cleaned_info.append(row)
                 cleaned_info = "\n".join(cleaned_info)
-                print("***")
-                print(cleaned_info)
-                print("***")
                 info = '\n'.join(info)
+                print("Sending information to supernode!")
                 self.send_to_node(self.supernode, "\n" + cleaned_info)
             else:
                 print(data)
