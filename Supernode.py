@@ -11,7 +11,7 @@ class Supernode(Node):
         print("outbound_node_connected: " + connected_node.id)
 
     def inbound_node_connected(self, connected_node):
-        print("inbound_node_connected: " + connected_node.id)
+        print("\ninbound_node_connected: " + connected_node.id + '@' + connected_node.host + ':' + connected_node.port)
 
     def inbound_node_disconnected(self, connected_node):
         print("inbound_node_disconnected: " + connected_node.id)
