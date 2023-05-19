@@ -28,12 +28,23 @@ class MyNode (Node):
         print("node_message from " + connected_node.id + ": " + str(data))
 
         if data == 'information':
-            if connected_node.host == self.supernode_host:
-                information = subprocess.check_output(['ps', '-eo', '%cpu,pid', '--sort', '-%cpu'])
-                self.send_to_node(self.supernode, information)
+            if connected_node.host == self.supernode_host and connected_node.port == self.supernode_port:
+                info = subprocess.check_output(['ps', '-eo', '%cpu,%mem,pid', '--sort', '-%cpu']).decode('utf-8').splitlines()
+                cleaned_info = []
+                cleaned_info.append(info[0])
+                for i in range(1, len(info)):
+                    row = info[i]
+                    if row.split()[0] != '0.0' or row.split()[1] != '0.0':
+                        cleaned_info.append(row)
+                cleaned_info = "\n".join(cleaned_info)
+                print("***")
+                print(cleaned_info)
+                print("***")
+                info = '\n'.join(info)
+                self.send_to_node(self.supernode, "\n" + cleaned_info)
             else:
                 print(data)
-                self.send_to_node(self.supernode, "Hi, I'm Alive!")
+                self.send_to_node(connected_node, "Hi, I'm Alive!")
 
     def node_disconnect_with_outbound_node(self, connected_node):
         print("node wants to disconnect with oher outbound node: " + connected_node.id)
